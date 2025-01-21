@@ -1,29 +1,22 @@
 //-
 using System;
 
+using Task1.Accounts;
 
-namespace Task1;
 
-public class Calculator
+namespace Task1.App;
+
+/// <summary>
+/// класс банковского калькулятора
+/// </summary>
+public static class Calculator
 {
-    // Метод для расчета процентной ставки
-    public static void CalculateInterest(Account account) 
-    { 
-        if (account.Type == "Обычный") 
-        { 
-            // расчет процентной ставки обычного аккаунта по правилам банка
-            account.Interest = account.Balance * 0.4;
-
-            if (account.Balance < 1000)
-                account.Interest -= account.Balance * 0.2;
-
-            if (account.Balance >= 1000)
-                account.Interest -= account.Balance * 0.4;
-        } 
-        else if(account.Type == "Зарплатный") 
-        { 
-            // расчет процентной ставк зарплатного аккаунта по правилам банка
-            account.Interest = account.Balance * 0.5;
-        } 
+    /// <summary>
+    /// метод, запускающий расчет процентной ставки на аккаунте
+    /// </summary>
+    /// <param name="account">банковский аккаунт</param>
+    public static void CalculateInterest(IAccount account) 
+    {
+        account.GetProfit();
     }
 }
